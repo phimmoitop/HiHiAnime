@@ -43,6 +43,7 @@ export async function megacloud({ selectedServer, id }) {
       const token = await extractToken(`${baseUrl}/${sourceId}?k=1&autoPlay=0&oa=0&asi=1`);
       const { data } = await axios.get(`${baseUrl}/getSources?id=${sourceId}&_k=${token}`);
       rawSourceData = data;
+      console.log('Raw source data before decrypt:', rawSourceData);
       const encrypted = rawSourceData?.sources;
       if (!encrypted) throw new Error('Encrypted source missing');
 
